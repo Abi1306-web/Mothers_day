@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día de las Madres - ¡Bienvenida!</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffb8b8; /* Un tono rosa suave */
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #e91e63; /* Un rosa más intenso */
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #ff80ab; /* Otro tono rosa */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #f50057; /* Un rosa aún más oscuro al pasar el ratón */
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .greeting-container {
+            text-align: center;
+        }
+        .greeting-container h2 {
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+        .greeting-container button {
+            margin-top: 20px;
+        }
+        .imagen-moviendose {
+            width: 50px; /* Tamaño de la imagen */
+            height: auto;
+            position: absolute;
+            animation: moverHorizontal 10s linear infinite alternate; /* Animación horizontal */
+        }
+        .imagen-moviendose.delay-1 {
+            animation-delay: 1s;
+        }
+        .imagen-moviendose.delay-2 {
+            animation-delay: 3s;
+        }
+        .imagen-moviendose.delay-3 {
+            animation-delay: 5s;
+        }
+
+        @keyframes moverHorizontal {
+            0% {
+                left: -50px; /* Fuera de la pantalla a la izquierda */
+            }
+            100% {
+                left: calc(100% + 50px); /* Fuera de la pantalla a la derecha */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>¡Bienvenida!</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+            <p id="errorMessage" class="error-message hidden">Usuario o contraseña incorrectos.</p>
+        </form>
+    </div>
+
+    <div id="greetingContainer" class="greeting-container hidden">
+        <h2>¡Feliz Día de las Madres!</h2>
+        <button id="menuButton">Fotos</button>
+    </div>
+
+    <img src="Images/png-transparent-purple-cosmos-flower-illustration-flower-blossom-flower-purple-violet-color-thumbnail-removebg-preview.png" alt="Corazón" class="imagen-moviendose" style="top: 10%;">
+    <img src="Images/png-transparent-purple-cosmos-flower-illustration-flower-blossom-flower-purple-violet-color-thumbnail-removebg-preview.png" alt="Flor" class="imagen-moviendose delay-1" style="top: 30%;">
+    <img src="Images/png-transparent-purple-cosmos-flower-illustration-flower-blossom-flower-purple-violet-color-thumbnail-removebg-preview.png" alt="Tulipán" class="imagen-moviendose delay-2" style="top: 50%;">
+    <img src="Images/png-transparent-purple-cosmos-flower-illustration-flower-blossom-flower-purple-violet-color-thumbnail-removebg-preview.png" alt="Ramo" class="imagen-moviendose delay-3" style="top: 70%;">
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const greetingContainer = document.getElementById('greetingContainer');
+        const menuButton = document.getElementById('menuButton');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Aquí puedes implementar una lógica de autenticación más robusta
+            if (username === 'mama' && password === 'felizdia') {
+                loginForm.classList.add('hidden');
+                greetingContainer.classList.remove('hidden');
+            } else {
+                errorMessage.classList.remove('hidden');
+            }
+        });
+
+        menuButton.addEventListener('click', function() {
+            window.location.href = 'Mamá.html'; // Redirige a la página de las fotos
+        });
+    </script>
+</body>
+</html>
